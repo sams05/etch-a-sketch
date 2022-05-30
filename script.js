@@ -12,8 +12,12 @@ function colorSquare() {
     this.classList.add('visited');
 }
 
-// Create dim x dim grid with squares that leaved colored trails as the mouse hovers over them
+// Create dim x dim grid with squares that leave colored trails as the mouse hovers over them
 function drawGrid(dim=16) {
+    if(dim > 100) {
+        dim = 100; // Limit to max of 100 squares
+    }
+
     const squareSize = getSquareSize(dim);
     for(let row = 0; row < dim; row++) {
         const rowContainer = document.createElement('div');
@@ -33,9 +37,23 @@ function drawGrid(dim=16) {
     }
 }
 
-drawGrid(); // Initialize default grid
+function clearGrid() {
+    const container = document.querySelector('.container');
+    while(container.lastElementChild) {
+        container.removeChild(container.lastElementChild);
+    }
+}
 
-/*
+function changeGrid() {
+    clearGrid();
+    let dim;
+    do {
+        dim = +prompt('Number of squares on each side (max 100): ', 16);
+    } while(!Number.isInteger(dim) || dim < 1)
+    drawGrid(dim);
+}
+
 const btn = document.querySelector('button');
-btn.addEventListener('click', )
-*/
+btn.addEventListener('click', changeGrid)
+
+drawGrid(); // Initialize default grid
