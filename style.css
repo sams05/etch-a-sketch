@@ -2,18 +2,28 @@
     box-sizing: border-box;
 }
 
+.container {
+    width: 700px;
+    margin: 0 auto;
+}
+
 .row {
     display: flex;
     justify-content: center;
 }
 
 .row > div {
-    border: 2px solid black;
-    margin: 1px;
-    width: 50px;
-    height: 50px;
+    border: .1px solid black;
+    width: 44px;
+    height: 44px;
 }
 
 .visited {
     background-color: aqua;
+}
+
+button {
+    background-color: bisque;
+    padding: 4px 8px;
+    border-radius: 4px;
 }
